@@ -5,13 +5,9 @@ include $(CLEAR_VARS)
 OPENCV_LIB_TYPE:=STATIC
 OPENCV_INSTALL_MODULES:=on
 
-include ../includeOpenCV.mk
-ifeq ("$(wildcard $(OPENCV_MK_PATH))","")
-	#try to load OpenCV.mk from default install location
-	include $(TOOLCHAIN_PREBUILT_ROOT)/user/share/OpenCV/OpenCV.mk
-else
-	include $(OPENCV_MK_PATH)
-endif
+
+include /usr/local/Cellar/opencv/sdk/native/jni/OpenCV.mk
+
 
 LOCAL_MODULE    := ImageProcessing
 LOCAL_SRC_FILES := ImageProcessing.cpp

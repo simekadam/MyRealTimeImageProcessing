@@ -4,7 +4,9 @@
 #include <jni.h>
 
 #include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc/imgproc_c.h>
+
 
 using namespace std;
 using namespace cv;
@@ -18,6 +20,8 @@ Java_my_project_MyRealTimeImageProcessing_CameraPreview_ImageProcessing(
 		jint width, jint height,
 		jbyteArray NV21FrameData, jintArray outPixels)
 {
+
+	if ( NV21FrameData == NULL ) return true;
 	jbyte * pNV21FrameData = env->GetByteArrayElements(NV21FrameData, 0);
 	jint * poutPixels = env->GetIntArrayElements(outPixels, 0);
 
